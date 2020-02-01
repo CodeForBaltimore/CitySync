@@ -11,7 +11,7 @@ from sys import argv, exit, exc_info
 def process_data(row):
     ''' Strips the csv.DictReader data from tuplesets to writeable list values'''
     new_row = list(row.values())
-    new_row.append(convertcode(new_row[col_index]))
+    new_row[-1] = convertcode(new_row[col_index])
     return new_row
 
 def convertcode(code):
