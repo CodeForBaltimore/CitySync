@@ -347,7 +347,7 @@ else:
             writer.writerow(process_data(row))
         print("Conversion completed ---> {}".format(outfilename))
 
-    except (FileError, IOError, FileNotFound) as e:
+    except (IOError, FileNotFound) as e:
         print("ERROR accessing file: {}".format(filename))
         raise
     except:
