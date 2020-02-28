@@ -19,7 +19,8 @@ def create_app():
     from config import config
     from app.user.views import user_blueprint
     from app.main.views import main_blueprint
-    from app.models import User, AnonymousUser
+    from app.api.views import api_blueprint
+    from app.models import User, AnonymousUser, Nonprofit
 
     # instantiate app
     app = Flask(__name__)
@@ -30,11 +31,14 @@ def create_app():
     config[env].configure()
 
     # set up extensions
-    for ext in (login_manager, bootstrap, db, migrate):
+    for ext in (login_manager, bootstrap, db):
         ext.init_app(app)
 
+    # setup the migrate extension - (otherwise db migrate fails) 
+    migrate.init_app(app, db)
+
     # register blueprints
-    for blueprint in (user_blueprint, main_blueprint):
+    for blueprint in (user_blueprint, main_blueprint, api_blueprint):
         app.register_blueprint(blueprint)
 
     # set up flask login
