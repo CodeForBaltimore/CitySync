@@ -78,15 +78,15 @@ class Nonprofit(db.Model):
            foundation, activity, organization, status, tax_period, asset_cd, income_cd, filing_req_cd, pf_filing_req_cd, acct_pd, asset_amt, income_amt,
            revenue_amt, ntee, sort_name, activity_full):
 
-        self.id 	      = id
-        self.ein 	      = ein
+        self.id 	          = id
+        self.ein 	          = ein
         self.name             = name
-        self.ico 	      = ico
+        self.ico 	          = ico
         self.street 	      = street
-        self.city 	      = city
-        self.state 	      = state
+        self.city 	          = city
+        self.state 	          = state
         self.zipcode 	      = zipcode
-        self.group 	      = group
+        self.group 	          = group
         self.subsection       = subsection
         self.affiliation      = affiliation
         self.classification   = classification
