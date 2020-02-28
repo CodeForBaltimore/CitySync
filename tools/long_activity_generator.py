@@ -11,7 +11,8 @@ from sys import argv, exit, exc_info
 def process_data(row):
     ''' Strips the csv.DictReader data from tuplesets to writeable list values'''
     new_row = list(row.values())
-    new_row.append(convertcode(new_row[col_index]))
+    # Change the last column to the longform of activity names
+    new_row[-1] = convertcode(new_row[col_index])
     return new_row
 
 def convertcode(code):
@@ -335,6 +336,7 @@ else:
         try:
             col_names = reader.fieldnames
             col_index = col_names.index("ACTIVITY")
+            print("Found 'ACTIVITY' column in position {}".format(col_index))
         except ValueError:
             print("ERROR! Missing 'ACTIVITY' column header in csv!")
             exit(-2)
@@ -351,7 +353,7 @@ else:
         print("ERROR accessing file: {}".format(filename))
         raise
     except:
-        print("Unexpected ERROR!" + str(exc_info()[0]))
+        print("Unexpected ERROR --> " + exc_info()[0].__name__)
         raise
     else:
         # Close open handles
