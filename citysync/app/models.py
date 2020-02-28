@@ -47,6 +47,7 @@ class Nonprofit(db.Model):
     name = db.Column(db.String(60), unique=False, nullable=True)
     ico = db.Column(db.String(60), unique=False, nullable=True)
     street = db.Column(db.String(60), unique=False, nullable=False)
+    raw_street = db.Column(db.String(60), unique=False, nullable=True)
     city = db.Column(db.String(60), unique=False, nullable=False)
     state = db.Column(db.String(2), unique=False, nullable=False)
     zipcode = db.Column(db.String(15), unique=False, nullable=False)
@@ -74,7 +75,7 @@ class Nonprofit(db.Model):
     activity_full = db.Column(db.String(250), unique=False, nullable=True)
 
 
-    def __init__(self, id, name, ein, ico, street, city, state, zipcode, group, subsection, affiliation, classification, ruling, deductability,
+    def __init__(self, id, name, ein, ico, street, raw_street, city, state, zipcode, group, subsection, affiliation, classification, ruling, deductability,
            foundation, activity, organization, status, tax_period, asset_cd, income_cd, filing_req_cd, pf_filing_req_cd, acct_pd, asset_amt, income_amt,
            revenue_amt, ntee, sort_name, activity_full):
 
@@ -83,6 +84,7 @@ class Nonprofit(db.Model):
         self.name             = name
         self.ico 	          = ico
         self.street 	      = street
+        self.raw_street       = raw_street
         self.city 	          = city
         self.state 	          = state
         self.zipcode 	      = zipcode
