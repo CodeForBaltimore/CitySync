@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_marshmallow import Marshmallow
 
 
 # instantiate extensions
@@ -12,7 +13,7 @@ login_manager = LoginManager()
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 migrate = Migrate()
-
+ma = Marshmallow()
 
 def create_app():
 
@@ -31,7 +32,7 @@ def create_app():
     config[env].configure()
 
     # set up extensions
-    for ext in (login_manager, bootstrap, db):
+    for ext in (login_manager, bootstrap, db, ma):
         ext.init_app(app)
 
     # setup the migrate extension - (otherwise db migrate fails) 

@@ -5,6 +5,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db
+from app import ma
 
 
 class User(db.Model, UserMixin):
@@ -41,8 +42,9 @@ class Nonprofit(db.Model):
 
     __tablename__ = 'nonprofits'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     ein = db.Column(db.Integer, unique=True, nullable=False)
+    name = db.Column(db.String(60), unique=False, nullable=True)
     ico = db.Column(db.String(60), unique=False, nullable=True)
     street = db.Column(db.String(60), unique=False, nullable=False)
     city = db.Column(db.String(60), unique=False, nullable=False)
@@ -58,7 +60,7 @@ class Nonprofit(db.Model):
     activity = db.Column(db.Integer, unique=False, nullable=False)
     organization = db.Column(db.Integer, unique=False, nullable=False)
     status = db.Column(db.Integer, unique=False, nullable=False)
-    tax_period = db.Column(db.Integer, unique=False, nullable=True)
+    tax_period = db.Column(db.String(15), unique=False, nullable=True)
     asset_cd = db.Column(db.Integer, unique=False, nullable=False)
     income_cd = db.Column(db.Integer, unique=False, nullable=False)
     filing_req_cd = db.Column(db.Integer, unique=False, nullable=False)
@@ -72,36 +74,40 @@ class Nonprofit(db.Model):
     activity_full = db.Column(db.String(250), unique=False, nullable=True)
 
 
-    def __init__(self,id ,ein ,ico ,street ,city ,state ,zipcode ,group ,subsection ,affiliation ,classification ,ruling ,deductability ,foundation ,activity ,organization ,status ,tax_period ,asset_cd ,income_cd ,filing_req_cd ,pf_filing_req_cd ,acct_pd ,asset_amt ,income_amt ,revenue_amt ,ntee ,sort_name ,activity_full ):
-        self.id 	    = id 
-        self.ein 	    = ein 
-        self.ico 	    = ico 
-        self.street 	    = street 
-        self.city 	    = city 
-        self.state 	    = state 
-        self.zipcode 	    = zipcode 
-        self.group 	    = group 
-        self.subsection 	    = subsection 
-        self.affiliation 	    = affiliation 
-        self.classification 	    = classification 
-        self.ruling 	    = ruling 
-        self.deductability 	    = deductability 
-        self.foundation 	    = foundation 
-        self.activity 	    = activity 
-        self.organization 	    = organization 
-        self.status 	    = status 
-        self.tax_period 	    = tax_period 
-        self.asset_cd 	    = asset_cd 
-        self.income_cd 	    = income_cd 
-        self.filing_req_cd 	    = filing_req_cd 
-        self.pf_filing_req_cd 	    = pf_filing_req_cd 
-        self.acct_pd 	    = acct_pd 
-        self.asset_amt 	    = asset_amt 
-        self.income_amt 	    = income_amt 
-        self.revenue_amt 	    = revenue_amt 
-        self.ntee 	    = ntee 
-        self.sort_name 	    = sort_name 
-        self.activity_full 	    = activity_full 
+    def __init__(self, id, name, ein, ico, street, city, state, zipcode, group, subsection, affiliation, classification, ruling, deductability,
+           foundation, activity, organization, status, tax_period, asset_cd, income_cd, filing_req_cd, pf_filing_req_cd, acct_pd, asset_amt, income_amt,
+           revenue_amt, ntee, sort_name, activity_full):
+
+        self.id 	      = id
+        self.ein 	      = ein
+        self.name             = name
+        self.ico 	      = ico
+        self.street 	      = street
+        self.city 	      = city
+        self.state 	      = state
+        self.zipcode 	      = zipcode
+        self.group 	      = group
+        self.subsection       = subsection
+        self.affiliation      = affiliation
+        self.classification   = classification
+        self.ruling 	      = ruling
+        self.deductability    = deductability
+        self.foundation       = foundation
+        self.activity 	      = activity
+        self.organization     = organization
+        self.status 	      = status
+        self.tax_period       = tax_period
+        self.asset_cd         = asset_cd
+        self.income_cd 	      = income_cd
+        self.filing_req_cd    = filing_req_cd
+        self.pf_filing_req_cd = pf_filing_req_cd
+        self.acct_pd          = acct_pd
+        self.asset_amt        = asset_amt
+        self.income_amt       = income_amt
+        self.revenue_amt      = revenue_amt
+        self.ntee             = ntee
+        self.sort_name        = sort_name
+        self.activity_full    = activity_full
 
 
     def get_activities():
@@ -112,10 +118,18 @@ class Nonprofit(db.Model):
         pass
 
 
-    def __str__(self):
-        return (self.id, self.ein, self.street)
+
+class NonprofitSchema(ma.ModelSchema):
+    class Meta:
+        model = Nonprofit
+
+        # To specialize fields something like so
+#        fields = ('id', 'name', 'ein', 'ico', 'street', 'city', 'state', 'zipcode', 'group', 'subsection', 'affiliation', 'classification', 'ruling',
+# 'deductability', 'foundation', 'activity', 'organization', 'status', 'tax_period', 'asset_cd','income_cd', 'filing_req_cd', 'pf_filing_req_cd',
+# 'acct_pd', 'asset_amt', 'income_amt', 'revenue_amt', 'ntee', 'sort_name', 'activity_full')
 
 
-    def serialize(self):
-        return (self.id, self.ein, self.street)
+class UserSchema(ma.ModelSchema):
+    class Meta:
+        model = User
 
