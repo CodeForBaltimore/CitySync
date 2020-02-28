@@ -64,13 +64,45 @@ class Nonprofit(db.Model):
     filing_req_cd = db.Column(db.Integer, unique=False, nullable=False)
     pf_filing_req_cd = db.Column(db.Integer, unique=False, nullable=False)
     acct_pd = db.Column(db.Integer, unique=False, nullable=False)
-    income_cd = db.Column(db.Integer, unique=False, nullable=False)
     asset_amt = db.Column(db.Integer, unique=False, nullable=True)
     income_amt = db.Column(db.Integer, unique=False, nullable=True)
     revenue_amt = db.Column(db.Integer, unique=False, nullable=True)
     ntee = db.Column(db.String(10), unique=False, nullable=True)
     sort_name = db.Column(db.String(60), unique=False, nullable=True)
     activity_full = db.Column(db.String(250), unique=False, nullable=True)
+
+
+    def __init__(self,id ,ein ,ico ,street ,city ,state ,zipcode ,group ,subsection ,affiliation ,classification ,ruling ,deductability ,foundation ,activity ,organization ,status ,tax_period ,asset_cd ,income_cd ,filing_req_cd ,pf_filing_req_cd ,acct_pd ,asset_amt ,income_amt ,revenue_amt ,ntee ,sort_name ,activity_full ):
+        self.id 	    = id 
+        self.ein 	    = ein 
+        self.ico 	    = ico 
+        self.street 	    = street 
+        self.city 	    = city 
+        self.state 	    = state 
+        self.zipcode 	    = zipcode 
+        self.group 	    = group 
+        self.subsection 	    = subsection 
+        self.affiliation 	    = affiliation 
+        self.classification 	    = classification 
+        self.ruling 	    = ruling 
+        self.deductability 	    = deductability 
+        self.foundation 	    = foundation 
+        self.activity 	    = activity 
+        self.organization 	    = organization 
+        self.status 	    = status 
+        self.tax_period 	    = tax_period 
+        self.asset_cd 	    = asset_cd 
+        self.income_cd 	    = income_cd 
+        self.filing_req_cd 	    = filing_req_cd 
+        self.pf_filing_req_cd 	    = pf_filing_req_cd 
+        self.acct_pd 	    = acct_pd 
+        self.asset_amt 	    = asset_amt 
+        self.income_amt 	    = income_amt 
+        self.revenue_amt 	    = revenue_amt 
+        self.ntee 	    = ntee 
+        self.sort_name 	    = sort_name 
+        self.activity_full 	    = activity_full 
+
 
     def get_activities():
         pass
@@ -80,4 +112,10 @@ class Nonprofit(db.Model):
         pass
 
 
+    def __str__(self):
+        return (self.id, self.ein, self.street)
+
+
+    def serialize(self):
+        return (self.id, self.ein, self.street)
 
