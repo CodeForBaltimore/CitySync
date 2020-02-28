@@ -347,14 +347,16 @@ else:
             writer.writerow(process_data(row))
         print("Conversion completed ---> {}".format(outfilename))
 
-    except (IOError, FileNotFound) as e:
+    except (IOError, FileNotFoundError) as e:
         print("ERROR accessing file: {}".format(filename))
         raise
     except:
-        print("Unexpected ERROR!" + exc_info()[0])
+        print("Unexpected ERROR!" + str(exc_info()[0]))
         raise
     else:
         # Close open handles
         f.close()
         fw.close()
+
+
 
