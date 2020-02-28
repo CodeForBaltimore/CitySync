@@ -51,9 +51,9 @@ class Nonprofit(db.Model):
     city = db.Column(db.String(60), unique=False, nullable=False)
     state = db.Column(db.String(2), unique=False, nullable=False)
     zipcode = db.Column(db.String(15), unique=False, nullable=False)
-    latitude = db.Column(db.Integer, unique=False, nullable=False)
-    longitude = db.Column(db.Integer, unique=False, nullable=False)
-    geo_accuracy = db.Column(db.Integer, unique=False, nullable=False)
+    latitude = db.Column(db.Float, unique=False, nullable=False)
+    longitude = db.Column(db.Float, unique=False, nullable=False)
+    geo_accuracy = db.Column(db.Float, unique=False, nullable=False)
     group = db.Column(db.Integer, unique=False, nullable=False)
     subsection = db.Column(db.Integer, unique=False, nullable=False)
     affiliation = db.Column(db.Integer, unique=False, nullable=False)
@@ -82,19 +82,19 @@ class Nonprofit(db.Model):
            foundation, activity, organization, status, tax_period, asset_cd, income_cd, filing_req_cd, pf_filing_req_cd, acct_pd, asset_amt, income_amt,
            revenue_amt, ntee, sort_name, activity_full):
 
-        self.id 	          = id
-        self.ein 	          = ein
+        self.id 	      = id
+        self.ein 	      = ein
         self.name             = name
-        self.ico 	          = ico
+        self.ico 	      = ico
         self.street 	      = street
         self.raw_street       = raw_street
-        self.city 	          = city
-        self.state 	          = state
+        self.city 	      = city
+        self.state 	      = state
         self.zipcode 	      = zipcode
         self.latitude         = latitude
         self.longitude        = longitude
         self.geo_accuracy     = geo_accuracy
-        self.group 	          = group
+        self.group 	      = group
         self.subsection       = subsection
         self.affiliation      = affiliation
         self.classification   = classification
