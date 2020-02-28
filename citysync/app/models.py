@@ -51,6 +51,9 @@ class Nonprofit(db.Model):
     city = db.Column(db.String(60), unique=False, nullable=False)
     state = db.Column(db.String(2), unique=False, nullable=False)
     zipcode = db.Column(db.String(15), unique=False, nullable=False)
+    latitude = db.Column(db.Integer, unique=False, nullable=False)
+    longitude = db.Column(db.Integer, unique=False, nullable=False)
+    geo_accuracy = db.Column(db.Integer, unique=False, nullable=False)
     group = db.Column(db.Integer, unique=False, nullable=False)
     subsection = db.Column(db.Integer, unique=False, nullable=False)
     affiliation = db.Column(db.Integer, unique=False, nullable=False)
@@ -75,7 +78,7 @@ class Nonprofit(db.Model):
     activity_full = db.Column(db.String(250), unique=False, nullable=True)
 
 
-    def __init__(self, id, name, ein, ico, street, raw_street, city, state, zipcode, group, subsection, affiliation, classification, ruling, deductability,
+    def __init__(self, id, name, ein, ico, street, raw_street, city, state, zipcode, latitude, longitude, geo_accuracy, group, subsection, affiliation, classification, ruling, deductability,
            foundation, activity, organization, status, tax_period, asset_cd, income_cd, filing_req_cd, pf_filing_req_cd, acct_pd, asset_amt, income_amt,
            revenue_amt, ntee, sort_name, activity_full):
 
@@ -88,6 +91,9 @@ class Nonprofit(db.Model):
         self.city 	          = city
         self.state 	          = state
         self.zipcode 	      = zipcode
+        self.latitude         = latitude
+        self.longitude        = longitude
+        self.geo_accuracy     = geo_accuracy
         self.group 	          = group
         self.subsection       = subsection
         self.affiliation      = affiliation
