@@ -1,0 +1,7 @@
+# ignore directories
+citysync/__pycache__/
+
+# ignore files
+*.pyc
+citysync/.env
+citysync/venv/
