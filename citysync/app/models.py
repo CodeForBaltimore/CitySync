@@ -110,7 +110,7 @@ class Nonprofit(db.Model):
         self.activity_full    = activity_full
 
 
-    def get_activities():
+    def get_activity():
         pass
 
 
