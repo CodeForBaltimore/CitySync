@@ -10,6 +10,7 @@ class BaseConfig(object):
     SECRET_KEY = os.environ.get('SECRET_KEY', 'QHxhPblY0qwrosov/oPXsycj5CgRv')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WTF_CSRF_ENABLED = False
+    JSON_SORT_KEYS = False
 
     @staticmethod
     def configure():
