@@ -125,6 +125,14 @@ class Nonprofit(db.Model):
     def get_ntee():
         pass
 
+    def __repr__(self):
+        # To specialize fields something like so
+        fields = (self.id, self.name, self.ein, self.ico, self.street, self.city, self.state, self.zipcode, self.group, self.subsection, self.affiliation, self.classification, self.ruling, 
+ self.deductability, self.foundation, self.activity, self.organization, self.status, self.tax_period, self.asset_cd,self.income_cd, self.filing_req_cd, self.pf_filing_req_cd, 
+ self.acct_pd, self.asset_amt, self.income_amt, self.revenue_amt, self.ntee, self.sort_name, self.activity_full) 
+
+        return str(fields)
+
 
 
 class NonprofitSchema(ma.ModelSchema):
