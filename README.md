@@ -8,7 +8,7 @@ To run this locally the following software is required:
 *  [Flask](https://palletsprojects.com/p/flask/)
 *  [Flask-Marshmallow](https://flask-marshmallow.readthedocs.io)
 *  [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com)
-*  [Docker](https://docker.com) *optional*
+*  [Docker](https://docker.com) (*for optional container image usage*)
 
 ### Local Server
 To run this application on your local machine you first need to install dependencies.  From the project root, run the following command:
