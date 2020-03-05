@@ -1,11 +1,9 @@
 #!/user/bin/env python
 
 import click
-
 from app import create_app, db, models
 
 app = create_app()
-
 
 # flask cli context
 @app.shell_context_processor
@@ -28,4 +26,4 @@ def drop_db():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
