@@ -31,6 +31,13 @@ def get_org_address_by_id(id):
     return jsonify(({ attr : getattr(org, attr) for attr in only_these_fields}))
 
 
+@api_blueprint.route("/api/orgs/id/<int:id>/geocode/", methods=["GET"])
+def get_org_geocode_by_id(id):
+    org = Nonprofit.query.get(id)
+    only_these_fields = ["id", "ein", "name", "longitude", "latitude"]
+    return jsonify(({ attr : getattr(org, attr) for attr in only_these_fields}))
+
+
 @api_blueprint.route("/api/orgs/ein/<int:ein>/", methods=["GET"])
 def get_org_by_ein(ein):
     org = Nonprofit.query.filter(Nonprofit.ein == ein).first()
@@ -43,6 +50,12 @@ def get_org_address_by_ein(ein):
     only_these_fields = ["id", "ein", "name", "street", "city", "state", "zipcode"]
     return jsonify(({ attr : getattr(org, attr) for attr in only_these_fields}))
 
+
+@api_blueprint.route("/api/orgs/ein/<int:ein>/geocode/", methods=["GET"])
+def get_org_geocode_by_ein(ein):
+    org = Nonprofit.query.filter(Nonprofit.ein == ein).first()
+    only_these_fields = ["id", "ein", "name", "longitude", "latitude"]
+    return jsonify(({ attr : getattr(org, attr) for attr in only_these_fields}))
 
 
 
