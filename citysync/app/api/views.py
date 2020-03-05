@@ -28,40 +28,40 @@ def get_orgs():
     return npschemas.jsonify(records)
 
 
-@api_blueprint.route("/api/orgs/id/<int:id>/", methods=["GET"])
+@api_blueprint.route("/api/orgs/id/<int:id>", methods=["GET"])
 def get_org_by_id(id):
     org = Nonprofit.query.get(id)
     return npschema.jsonify(org)
 
 
-@api_blueprint.route("/api/orgs/id/<int:id>/address/", methods=["GET"])
+@api_blueprint.route("/api/orgs/id/<int:id>/address", methods=["GET"])
 def get_org_address_by_id(id):
     org = Nonprofit.query.get(id)
     only_these_fields = ["id", "ein", "name", "street", "city", "state", "zipcode"]
     return jsonify(jsonsift(org, only_these_fields))
 
 
-@api_blueprint.route("/api/orgs/id/<int:id>/geocode/", methods=["GET"])
+@api_blueprint.route("/api/orgs/id/<int:id>/geocode", methods=["GET"])
 def get_org_geocode_by_id(id):
     org = Nonprofit.query.get(id)
     only_these_fields = ["id", "ein", "name", "longitude", "latitude"]
     return jsonify(jsonsift(org, only_these_fields))
 
 
-@api_blueprint.route("/api/orgs/ein/<int:ein>/", methods=["GET"])
+@api_blueprint.route("/api/orgs/ein/<int:ein>", methods=["GET"])
 def get_org_by_ein(ein):
     org = Nonprofit.query.filter(Nonprofit.ein == ein).first()
     return npschema.jsonify(org)
 
 
-@api_blueprint.route("/api/orgs/ein/<int:ein>/address/", methods=["GET"])
+@api_blueprint.route("/api/orgs/ein/<int:ein>/address", methods=["GET"])
 def get_org_address_by_ein(ein):
     org = Nonprofit.query.filter(Nonprofit.ein == ein).first()
     only_these_fields = ["id", "ein", "name", "street", "city", "state", "zipcode"]
     return jsonify(jsonsift(org, only_these_fields))
 
 
-@api_blueprint.route("/api/orgs/ein/<int:ein>/geocode/", methods=["GET"])
+@api_blueprint.route("/api/orgs/ein/<int:ein>/geocode", methods=["GET"])
 def get_org_geocode_by_ein(ein):
     org = Nonprofit.query.filter(Nonprofit.ein == ein).first()
     only_these_fields = ["id", "ein", "name", "longitude", "latitude"]
