@@ -1,31 +1,27 @@
 ![Code for Baltimore](/docs/img/CfB.png)
 
-# ProjectTemplate
-
 ## Documentation
 
 ## Setup
 To run this locally the following software is required:
-*  [Python](https://www.python.org/)(version minimum 3.6)
+*  [Python](https://www.python.org/) (version minimum 3.6)
 *  [Flask](https://palletsprojects.com/p/flask/)
 *  [Flask-Marshmallow](https://flask-marshmallow.readthedocs.io)
 *  [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com)
 *  [Docker](https://docker.com) *optional*
-
-If on a Mac you can install Node and npm via Homebrew with `brew install python`
 
 ### Local server
 To run this application on your local machine you first need to install dependencies.  From the project root, run the following command:
 ```shell
 pip install -r requirements.txt
 ```
-*note* in some environments you may need to run `pip3` instead of `pip` if you're running both Python 2.6 and 3.x.
+(*note* in some environments you may need to run `pip3` instead of `pip` if you're running both Python 2.6 and 3.x.)
 
 Once that completes you can run the application by running the following from the project root:
 ```shell
 python server.py
 ```
-*note* in some environments you may need to run `python3` instead of `python` if you're running both Python 2.6 adn 3.x.
+(*note* in some environments you may need to run `python3` instead of `python` if you're running both Python 2.6 adn 3.x.)
 
 #### Docker
 Alternatively if you wish to run this in Docker instead of on your local you may do so using the included `Dockerfile`. To use the Docker simply run the following commands:
@@ -47,7 +43,5 @@ You may then make changes to the code and re-run the initial `build` and `run` c
 Once setup and running (via Docker or locally) you can see the output by visiting http://localhost:5000
 
 ## Testing
-What does someone need to do to test their work? Have you included a specific testing framework or guideline (hint: you should)? Any information about testing should be added here.
 
 ## Sources and Links
-If referencing any third party service, code, etc, cite it here.
