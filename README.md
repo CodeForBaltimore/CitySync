@@ -40,9 +40,11 @@ docker stop <container id>
 You may then make changes to the code and re-run the initial `build` and `run` commands. 
 
 ## Using this product
-Once setup and running (via Docker or locally) you can see the output by visiting http://localhost:5000
+Once setup and running (via Docker or locally) you can see the output by making queries to http://localhost:5000
+
+Example: API request for general nonprofit data using curl.
 ```shell
-curl -X GET http://localhost:5000/api/id/1/
+curl -X GET http://localhost:5000/api/orgs/id/1
 
 { 
   "id": 1,
@@ -81,6 +83,34 @@ curl -X GET http://localhost:5000/api/id/1/
   "activity_full": ""
 }
 
+```
+
+Example: API Request for Nonprofit organization address using curl.
+```shell
+curl -X GET http://localhost:5000/api/orgs/id/1/address
+
+{
+  "id": 1, 
+  "ein": 10591773, 
+  "name": "CONGREGATION YALKUT HA URIM INC", 
+  "street": "6214 BENHURST RD", 
+  "city": "BALTIMORE", 
+  "state": "MD", 
+  "zipcode": "21209-3807"
+}
+```
+
+Example: API Request for Nonprofit geocoordinate location using curl.
+```shell
+curl -X GET http://localhost:5000/api/orgs/id/1/geocode
+
+{
+  "id": 1, 
+  "ein": 10591773, 
+  "name": "CONGREGATION YALKUT HA URIM INC", 
+  "longitude": -76.690235, 
+  "latitude": 39.366293, 
+}
 ```
 
 ## Testing
