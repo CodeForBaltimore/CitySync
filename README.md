@@ -7,6 +7,9 @@
 ## Setup
 To run this locally the following software is required:
 *  [Python](https://www.python.org/)(version minimum 3.6)
+*  [Flask](https://palletsprojects.com/p/flask/)
+*  [Flask-Marshmallow](https://flask-marshmallow.readthedocs.io)
+*  [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com)
 *  [Docker](https://docker.com) *optional*
 
 If on a Mac you can install Node and npm via Homebrew with `brew install python`
@@ -27,8 +30,8 @@ python server.py
 #### Docker
 Alternatively if you wish to run this in Docker instead of on your local you may do so using the included `Dockerfile`. To use the Docker simply run the following commands:
 ```shell
-docker build -t pythonhelloworld:latest .
-docker run -d -p 5858:5858 pythonhelloworld:latest
+docker build -t citysync-dockerimg:latest .
+docker run -d -p 5000:5000 citysync-dockerimg:latest
 ```
 To stop the container run:
 ```shell
@@ -40,10 +43,8 @@ docker stop <container id>
 ```
 You may then make changes to the code and re-run the initial `build` and `run` commands. 
 
-For more information about Docker please visit their website https://docker.comection of the `README` you should include any information a new contributor or user of the project needs to know to get running locally and setup.
-
 ## Using this product
-Once setup and running (via Docker or locally) you can see the output by visiting http://localhost:5858
+Once setup and running (via Docker or locally) you can see the output by visiting http://localhost:5000
 
 ## Testing
 What does someone need to do to test their work? Have you included a specific testing framework or guideline (hint: you should)? Any information about testing should be added here.
