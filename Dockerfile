@@ -1,19 +1,20 @@
 FROM python:3-alpine
 
-# Make the directory we will be installing app. Consider if using NGINX or APACHE
+# Exposes the default test development server on post 5000. 
+# Consumer needs to map to this port using either randon (-P) or single specific (-p) to docker run
+EXPOSE 5000
+
+# Create directory for app install. Consider changes when we use NGINX or APACHE
 RUN mkdir -p /root/citysync/
-WORKDIR /root/citysync/
+ADD citysync /root/citysync/
 
-COPY citysync /root/
-
-# Already in folder so this is extraneous most likely
-#COPY requirements.txt /root/citysync/
-
-# Copy readymade data seeded TEST sqlite3 database. Consider when using PostgreSQL 
+# Copy readymade data seeded TEST sqlite3 database. Consider changes when we use PostgreSQL 
 COPY database-devel.sqlite3 /root/citysync/
 
-# Install the requirements. We need a base version of python 3.6 at the least. 
+# Install the requirements. Need a base version of python 3.6 at the least. 
+WORKDIR /root/citysync/
 RUN pip install -r requirements.txt
 
-# Start the developmental server
-CMD [ "python", "-u", "manage.py" ]
+# Start the development server
+ENTRYPOINT [ "python3" ]
+CMD ["-u", "manage.py" ]
