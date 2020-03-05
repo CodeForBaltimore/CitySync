@@ -10,7 +10,7 @@ To run this locally the following software is required:
 *  [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com)
 *  [Docker](https://docker.com) *optional*
 
-### Local server
+### Local Server
 To run this application on your local machine you first need to install dependencies.  From the project root, run the following command:
 ```shell
 pip install -r requirements.txt
@@ -41,6 +41,47 @@ You may then make changes to the code and re-run the initial `build` and `run` c
 
 ## Using this product
 Once setup and running (via Docker or locally) you can see the output by visiting http://localhost:5000
+```shell
+curl -X GET http://localhost:5000/api/id/1/
+
+{ 
+  "id": 1,
+  "ein": 10591773,
+  "name": "CONGREGATION YALKUT HA URIM INC",
+  "ico": "% RABBI ISRAEL JAKOBOVITZ",
+  "street": "6214 BENHURST RD",
+  "raw_street": "",
+  "city": "BALTIMORE",
+  "state": "MD",
+  "zipcode": "21209-3807",
+  "latitude": 39.366293,
+  "longitude": -76.690235,
+  "geo_accuracy": 1.0,
+  "group": 0,
+  "subsection": 3,
+  "affiliation": 3,
+  "classification": 7000,
+  "ruling": 200212,
+  "deductability": 1,
+  "foundation": 10,
+  "activity": 0,
+  "organization": 1,
+  "status": 1,
+  "tax_period": "",
+  "asset_cd": 0,
+  "income_cd": 0,
+  "filing_req_cd": 6,
+  "pf_filing_req_cd": 0,
+  "acct_pd": 12,
+  "asset_amt": 0,
+  "income_amt": 0,
+  "revenue_amt": 0,
+  "ntee": "X30",
+  "sort_name": "",
+  "activity_full": ""
+}
+
+```
 
 ## Testing
 
