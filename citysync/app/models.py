@@ -11,6 +11,8 @@ from app import ma
 class User(db.Model, UserMixin):
 
     __tablename__ = 'users'
+    __table_args__ = {'extend_existing': True}
+
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(60), unique=True, nullable=False)
@@ -41,6 +43,7 @@ class AnonymousUser(AnonymousUserMixin):
 class Nonprofit(db.Model):
 
     __tablename__ = 'nonprofits'
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     ein = db.Column(db.Integer, unique=True, nullable=False)
@@ -117,16 +120,15 @@ class Nonprofit(db.Model):
         self.sort_name        = sort_name
         self.activity_full    = activity_full
 
-
     def get_activity():
         pass
-
 
     def get_ntee():
         pass
 
     def __repr__(self):
-        # To specialize fields something like so
+
+        # interpreter representation
         fields = (self.id, self.name, self.ein, self.ico, self.street, self.city, self.state, self.zipcode, self.group, self.subsection, self.affiliation, self.classification, self.ruling, 
  self.deductability, self.foundation, self.activity, self.organization, self.status, self.tax_period, self.asset_cd,self.income_cd, self.filing_req_cd, self.pf_filing_req_cd, 
  self.acct_pd, self.asset_amt, self.income_amt, self.revenue_amt, self.ntee, self.sort_name, self.activity_full) 
@@ -138,6 +140,7 @@ class Nonprofit(db.Model):
 class NonprofitSchema(ma.ModelSchema):
     class Meta:
         model = Nonprofit
+        ordered = True
 
         # To specialize fields something like so
 #        fields = ('id', 'name', 'ein', 'ico', 'street', 'city', 'state', 'zipcode', 'group', 'subsection', 'affiliation', 'classification', 'ruling',
