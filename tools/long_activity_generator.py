@@ -338,7 +338,7 @@ else:
             col_index = col_names.index("ACTIVITY")
             print("Found 'ACTIVITY' column in position {}".format(col_index))
         except ValueError:
-            print("ERROR! Missing 'ACTIVITY' column header in csv!")
+            print("ERROR! Missing 'ACTIVITY' column header in csv!\nDoes the first line of the CSV have column headers?")
             exit(-2)
         else:
             col_names.append("ACTIVITY_FULL")
