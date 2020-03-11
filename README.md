@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 Once that completes you can run the application by running the following from the project root:
 ```shell
-python server.py
+python manage.py
 ```
 (*note* in some environments you may need to run `python3` instead of `python` if you're running both Python 2.6 adn 3.x.)
 
