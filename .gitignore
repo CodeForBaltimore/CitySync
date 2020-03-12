@@ -5,3 +5,5 @@ citysync/__pycache__/
 *.pyc
 citysync/.env
 citysync/venv/
+
+.env
