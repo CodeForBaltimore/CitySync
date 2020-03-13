@@ -17,14 +17,11 @@ def jsonsift(obj, attrlist):
 
 @api_blueprint.route("/api/orgs/all", methods=["GET"])
 def get_orgs():
-    all_orgs = Nonprofit.query.all()
-    # paginate logic
-    records = []
-    for x, org in enumerate(all_orgs):
-        records.append(org)
-        if x == 10:
-            break
-
+    page = int(request.args.get('page', None))
+    if page is None:
+        records = Nonprofit.query.all()
+    else:
+        records = Nonprofit.query.paginate(page, 10, False).items
     return npschemas.jsonify(records)
 
 
